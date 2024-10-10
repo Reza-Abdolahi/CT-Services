@@ -1,0 +1,15 @@
+ 
+# Ignore dist folder (compiled output)
+dist/
+
+# Ignore node_modules folder
+node_modules/
+
+# Ignore log files
+npm-debug.log*
+
+# Ignoring environment variable files
+.env
+
+# Ignore any compiled JavaScript files
+*.js
