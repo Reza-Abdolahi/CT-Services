@@ -1,0 +1,32 @@
+services:
+  product-service:
+    build:
+      context: .                      # Use the root as the build context
+      dockerfile: Dockerfile           # Use the shared Dockerfile in the root
+    command: npx ts-node ProductService/index.ts  # Start the ProductService by pointing to the correct index.ts
+    volumes:
+      - .:/app                        # Mount the entire project root into the container
+    working_dir: /app/ProductService   # Set the working directory to ProductService
+    ports:
+      - "3000:3000"                   # Expose ProductService on port 3000
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_PORT: 3306
+      DATABASE_USER: root
+      DATABASE_PASSWORD: rootpassword
+      DATABASE_NAME: productdb
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: productdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

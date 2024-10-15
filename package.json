@@ -1,21 +1,21 @@
 {
-  "name": "product-review-system",
+  "name": "ct-services",
   "version": "1.0.0",
-  "description": "A two-service system for product reviews.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "npx tsc",
-    "start": "node dist/index.js"
+    "build": "tsc",
+    "start:product": "npx ts-node ProductService/index.ts",
+    "start:review": "npx ts-node ReviewService/reviewIndex.ts",
+    "docker-build": "docker-compose up --build"
   },
   "dependencies": {
-    "express": "^4.21.1",
-    "reflect-metadata": "^0.2.2",
-    "typeorm": "^0.3.20"
+    "express": "^4.17.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.20",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",
-    "typescript": "^5.6.3"
-  },
-  "author": "",
-  "license": "ISC"
+    "typescript": "^5.6.2"
+  }
 }
